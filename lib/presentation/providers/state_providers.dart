@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../config/helpers/random_generator.dart';
 part 'state_providers.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class Counter extends _$Counter {
   @override
   int build() {
@@ -25,7 +25,7 @@ class IsDarkMode extends _$IsDarkMode {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 class UserName extends _$UserName {
   @override
   build() => "Carlos Sierra";
