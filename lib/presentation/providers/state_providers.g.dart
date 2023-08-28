@@ -20,5 +20,35 @@ final counterProvider = AutoDisposeNotifierProvider<Counter, int>.internal(
 );
 
 typedef _$Counter = AutoDisposeNotifier<int>;
+String _$isDarkModeHash() => r'bc24cb217574092ff7d8e57ea69090f74f3ed5d6';
+
+/// See also [IsDarkMode].
+@ProviderFor(IsDarkMode)
+final isDarkModeProvider =
+    AutoDisposeNotifierProvider<IsDarkMode, bool>.internal(
+  IsDarkMode.new,
+  name: r'isDarkModeProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$isDarkModeHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$IsDarkMode = AutoDisposeNotifier<bool>;
+String _$userNameHash() => r'd2aa8944006eefe5f958311bea32d2056c8a519c';
+
+/// See also [UserName].
+@ProviderFor(UserName)
+final userNameProvider =
+    AutoDisposeNotifierProvider<UserName, dynamic>.internal(
+  UserName.new,
+  name: r'userNameProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$userNameHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$UserName = AutoDisposeNotifier<dynamic>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

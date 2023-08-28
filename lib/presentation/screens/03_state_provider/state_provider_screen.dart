@@ -8,6 +8,8 @@ class StateProviderScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final counter = ref.watch(counterProvider);
+    final isDarkMode = ref.watch(isDarkModeProvider);
+    final name = ref.watch(userNameProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -21,10 +23,15 @@ class StateProviderScreen extends ConsumerWidget {
           ),
           IconButton(
             // icon: const Icon( Icons.light_mode_outlined, size: 100 ),
-            icon: const Icon(Icons.dark_mode_outlined, size: 100),
-            onPressed: () {},
+            icon: Icon(
+                isDarkMode
+                    ? Icons.dark_mode_outlined
+                    : Icons.light_mode_outlined,
+                size: 100),
+            onPressed: () =>
+                ref.read(isDarkModeProvider.notifier).toggleDarkMode(),
           ),
-          const Text('Fernando Herrera', style: TextStyle(fontSize: 25)),
+          Text('$name', style: const TextStyle(fontSize: 25)),
           TextButton.icon(
             icon: const Icon(
               Icons.add,
@@ -39,7 +46,7 @@ class StateProviderScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('Nombre aleatorio'),
         icon: const Icon(Icons.refresh_rounded),
-        onPressed: () {},
+        onPressed: () => ref.read(userNameProvider.notifier).getRandomName(),
       ),
     );
   }
