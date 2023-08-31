@@ -18,9 +18,21 @@ class FutureProviderScreen extends ConsumerWidget {
             error: ((error, stackTrace) => Text('$error')),
             loading: () => const CircularProgressIndicator()),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.refresh),
-        onPressed: () {},
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            child: const Icon(Icons.skip_previous_outlined),
+            onPressed: () => ref.read(pokemonIdProvider.notifier).prevPokemon(),
+          ),
+          const SizedBox(
+            width: 12,
+          ),
+          FloatingActionButton(
+            child: const Icon(Icons.skip_next_outlined),
+            onPressed: () => ref.read(pokemonIdProvider.notifier).nextPokemon(),
+          ),
+        ],
       ),
     );
   }
